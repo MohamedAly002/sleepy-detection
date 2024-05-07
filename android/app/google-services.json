@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "617093228331",
+    "project_id": "sleepy-detection",
+    "storage_bucket": "sleepy-detection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617093228331:android:2d126ae3c149d1ebb4476e",
+        "android_client_info": {
+          "package_name": "com.example.driver_drowsiness_alert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvt4-ANc8oAiV7HKElS5CDZ2iux5VUYgA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
