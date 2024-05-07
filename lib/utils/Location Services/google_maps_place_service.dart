@@ -4,7 +4,6 @@ import 'package:driver_drowsiness_alert/Api%20models/place_autocomplete_model/pl
 import 'package:driver_drowsiness_alert/Api%20models/place_details_model/place_details_model.dart';
 import 'package:http/http.dart' as http;
 
-
 class PlacesService {
   final String baseUrl = 'https://maps.googleapis.com/maps/api/place';
   final String apiKey = 'AIzaSyC4hxrWVsevXR9s5AuSSIZ3kAl6Gm0tUK4';

@@ -103,25 +103,37 @@ class MapServices {
 
   void updateCurrentLocation(
       {required GoogleMapController googleMapController,
-      required Set<Marker> markers,
-      required Function onUpdatecurrentLocation}) {
+        required Set<Marker> markers,
+        required Function onUpdatecurrentLocation}) {
     locationService.getRealTimeLocationData((locationData) {
       currentLocation = LatLng(locationData.latitude!, locationData.longitude!);
 
-      Marker currentLocationMarker = Marker(
-        markerId: const MarkerId('my location'),
-        position: currentLocation!,
-      );
-      CameraPosition myCurrentCameraPoistion = CameraPosition(
-        target: currentLocation!,
-        zoom: 17,
-      );
-      googleMapController.animateCamera(
-          CameraUpdate.newCameraPosition(myCurrentCameraPoistion));
-      markers.add(currentLocationMarker);
+      // Only add marker if it's not already added
+      if (!markers.any((marker) => marker.markerId.value == 'my location')) {
+        Marker currentLocationMarker = Marker(
+          markerId: MarkerId('my location'),
+          position: currentLocation!,
+        );
+        markers.add(currentLocationMarker);
+      }
+
+      // Check if it's the first call, if so, move the camera to current location
+      if (firstcall) {
+        CameraPosition myCurrentCameraPoistion = CameraPosition(
+          target: currentLocation!,
+          zoom: 17,
+        );
+        googleMapController.animateCamera(
+            CameraUpdate.newCameraPosition(myCurrentCameraPoistion));
+        firstcall = false; // Set first call to false after the initial camera update
+      }
+
+      // No camera update here to prevent automatic centering on user's location
+
       onUpdatecurrentLocation();
     });
   }
+
 
   Future<PlaceDetailsModel> getPlaceDetails({required String placeId}) async {
     return await placesService.getPlaceDetails(placeId: placeId);
