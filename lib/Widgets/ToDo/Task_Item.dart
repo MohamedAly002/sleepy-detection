@@ -1,4 +1,4 @@
-import 'package:driver_drowsiness_alert/Widgets/Drives_of_the_day/Edit_Task.dart';
+import 'package:driver_drowsiness_alert/Widgets/ToDo/Edit_Task.dart';
 import 'package:driver_drowsiness_alert/database/My_Database.dart';
 import 'package:driver_drowsiness_alert/database/Task.dart';
 import 'package:flutter/cupertino.dart';
@@ -75,9 +75,7 @@ class _TaskItemState extends State<TaskItem> {
                       children: [
                         Text(
                           widget.task.title,
-                          style: Theme.of(context)
-                              .textTheme
-                              .headline5
+                          style: TextStyle(fontSize: 24)
                               ?.copyWith(
                                   color: widget.task.isDone
                                       ? Colors.green
@@ -88,7 +86,7 @@ class _TaskItemState extends State<TaskItem> {
                         ),
                         Text(
                           widget.task.description,
-                          style: Theme.of(context).textTheme.headline6,
+                          style: TextStyle(fontSize: 22),
                         )
                       ],
                     ),
@@ -134,7 +132,7 @@ class _TaskItemState extends State<TaskItem> {
       type: QuickAlertType.confirm,
       text: 'Are you sure you want to delete this task?',
       confirmBtnText: 'Yes',
-      onConfirmBtnTap: () {
+      onConfirmBtnTap: ()  {
          MyDatabase.DeleteTask(widget.task);
         Navigator.pop(context);
         QuickAlert.show(context: context, type: QuickAlertType.success,text: 'Task is Deleted Successfully');

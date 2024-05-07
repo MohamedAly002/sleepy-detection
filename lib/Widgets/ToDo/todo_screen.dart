@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:driver_drowsiness_alert/Widgets/Drives_of_the_day/Add_Task.dart';
-import 'package:driver_drowsiness_alert/Widgets/Drives_of_the_day/Task_Item.dart';
+import 'package:driver_drowsiness_alert/Widgets/ToDo/Add_Task.dart';
+import 'package:driver_drowsiness_alert/Widgets/ToDo/Task_Item.dart';
 import 'package:driver_drowsiness_alert/database/My_Database.dart';
 import 'package:driver_drowsiness_alert/database/Task.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,25 +8,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_calendar_week/flutter_calendar_week.dart';
 import 'package:intl/intl.dart';
 
-class DrivesOfTheDay extends StatefulWidget {
-  const DrivesOfTheDay({Key? key}) : super(key: key);
-  static const String routeName = 'DrivesOfTheDay';
+
+class ToDoScreen extends StatefulWidget {
+  const ToDoScreen({Key? key}) : super(key: key);
+  static const String routeName = 'ToDoScreen';
 
   @override
-  State<DrivesOfTheDay> createState() => _DrivesOfTheDayState();
+  State<ToDoScreen> createState() => _ToDoScreenState();
 }
 
 var selectedDate = DateTime.now();
 
-class _DrivesOfTheDayState extends State<DrivesOfTheDay> {
+class _ToDoScreenState extends State<ToDoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           forceMaterialTransparency: true,
           title: Text(
-            'Drives of the Day',
-            style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+            'ToDo',
+            style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold,color: Colors.redAccent),
           ),
           centerTitle: true,
         ),
@@ -44,7 +45,7 @@ class _DrivesOfTheDayState extends State<DrivesOfTheDay> {
           child: Column(
             children: [
               Container(
-                height: MediaQuery.of(context).size.height * 0.14,
+                height: MediaQuery.of(context).size.height*0.14,
                 child: CalendarWeek(
                   // controller: _controller,
                   showMonth: true,
@@ -57,7 +58,8 @@ class _DrivesOfTheDayState extends State<DrivesOfTheDay> {
                   onDatePressed: (DateTime datetime) {
                     // Do something
                     setState(() {
-                      selectedDate = datetime;
+                      selectedDate=datetime;
+
                     });
                   },
                   onWeekChanged: () {
@@ -84,9 +86,11 @@ class _DrivesOfTheDayState extends State<DrivesOfTheDay> {
                           color: Colors.blue,
                         )),
                   ],
-
                 ),
               ),
+
+
+
               Expanded(
                   child:
                       // allTasks.isEmpty?Center(child: CircularProgressIndicator()):
@@ -118,6 +122,7 @@ class _DrivesOfTheDayState extends State<DrivesOfTheDay> {
 
   void ShowAddTaskBottomSheet() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       builder: (buildContext) {
         return AddTask();

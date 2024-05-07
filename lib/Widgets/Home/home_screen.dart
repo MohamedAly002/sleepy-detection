@@ -1,7 +1,7 @@
-import 'package:driver_drowsiness_alert/Widgets/Drives_of_the_day/drives_of_the_day.dart';
 import 'package:driver_drowsiness_alert/Widgets/Drowsiness_Detection/drowsiness_detection.dart';
 import 'package:driver_drowsiness_alert/Widgets/Map/Location_Map.dart';
 import 'package:driver_drowsiness_alert/Widgets/Settings/settings.dart';
+import 'package:driver_drowsiness_alert/Widgets/ToDo/todo_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,6 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  List<Widget>Tabs=[DrowsinessDetection(),LocationMap(),DrivesOfTheDay(),Settings()];
+  List<Widget>Tabs=[DrowsinessDetection(),LocationMap(),ToDoScreen(),Settings()];
 
 }

@@ -10,26 +10,45 @@ class DrowsinessDetection extends StatefulWidget {
 }
 
 class _DrowsinessDetectionState extends State<DrowsinessDetection> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          child: ElevatedButton(
-            onPressed: (){
-              Navigator.pushNamed(context, LiveCameraDetection.routeName);
-        
-            },
-           style: ButtonStyle(
-        
-           ),
-            child: Text('Start Detection',style: TextStyle(fontSize: 20),),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'Welcome to Sleepy Detection!',
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'To use this feature effectively, ensure the following:\n\n1. Position your face clearly in front of the camera.\n2. Ensure there is enough lighting in the environment.\n3. Avoid obstructing the camera with objects or hands.\n',
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 15,),
+              ElevatedButton(
+                style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xFF0583F2))),
+                onPressed: () {
+                  Navigator.pushNamed(context, LiveCameraDetection.routeName);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('Start Detection', style: TextStyle(fontSize: 24,color: Colors.white)),
+                ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
-
 }

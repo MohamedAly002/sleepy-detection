@@ -29,7 +29,7 @@ class _AddTaskState extends State<AddTask> {
               Text(
                 "Add New Task",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headline5,
+                style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),
               ),
               TextFormField(
                 style: Theme.of(context).textTheme.headline6,
@@ -42,7 +42,7 @@ class _AddTaskState extends State<AddTask> {
                 },
                 decoration: InputDecoration(
                   labelText: "Title",
-                  labelStyle: Theme.of(context).textTheme.headline5,
+                  labelStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
                   hintText: 'Enter Your Task',
                   hintStyle: TextStyle(color: Colors.grey),
                 ),
@@ -54,7 +54,7 @@ class _AddTaskState extends State<AddTask> {
                 maxLines: 4,
                 decoration: InputDecoration(
                     labelText: "Description",
-                    labelStyle: Theme.of(context).textTheme.headline5,
+                    labelStyle: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
                     hintText: 'Enter Your Description',
                     hintStyle: TextStyle(color: Colors.grey)),
                 validator: (inpute) {
@@ -69,7 +69,7 @@ class _AddTaskState extends State<AddTask> {
               ),
               Text(
                 "Select Date",
-                style: Theme.of(context).textTheme.headline6,
+                style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
@@ -82,24 +82,25 @@ class _AddTaskState extends State<AddTask> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     MyDateUtils.formateTaskDate(selectedDate),
-                    style: Theme.of(context)
-                        .textTheme
-                        .headline6
+                    style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold)
                         ?.copyWith(color: Theme.of(context).primaryColor),
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                     insertTask();
-                     if (formKey.currentState?.validate() == true) {
-                       Navigator.pop(context);
-                     }
-                  },
-                  child: Text("Submit"))
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(style: ButtonStyle(elevation: MaterialStatePropertyAll(7),backgroundColor: MaterialStatePropertyAll(Color(0xFF0583F2))),
+                    onPressed: () {
+                       insertTask();
+                       if (formKey.currentState?.validate() == true) {
+                         Navigator.pop(context);
+                       }
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("Submit",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: Colors.white),),
+                    )),
+              )
             ],
           ),
         ),
@@ -138,7 +139,7 @@ class _AddTaskState extends State<AddTask> {
       QuickAlert.show(
           context: context,
           type: QuickAlertType.success,
-          text: 'The Task Inserted Successfuly');
+          text: 'The Task Added Successfully');
     } catch (e) {
       Navigator.pop(context);
       QuickAlert.show(

@@ -22,6 +22,7 @@ class _SettingsState extends State<Settings> {
             child: ElevatedButton(onPressed: ()async{
               await FirebaseAuth.instance.signOut();
               Navigator.pop(context);
+
             },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
