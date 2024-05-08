@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:driver_drowsiness_alert/Api%20models/location_info/lat_lng.dart';
 import 'package:driver_drowsiness_alert/Api%20models/location_info/location.dart';
 import 'package:driver_drowsiness_alert/Api%20models/location_info/location_info.dart';

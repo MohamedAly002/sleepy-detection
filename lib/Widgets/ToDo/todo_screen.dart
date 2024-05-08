@@ -36,7 +36,7 @@ class _ToDoScreenState extends State<ToDoScreen> {
             return ShowAddTaskBottomSheet();
           },
           backgroundColor: Colors.white,
-          child: Icon(Icons.add),
+          child: Icon(Icons.add,color: Colors.redAccent),
           shape: StadiumBorder(
             side: BorderSide(width: 5, color: Color(0xFF0583F2)),
           ),

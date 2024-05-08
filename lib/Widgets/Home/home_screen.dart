@@ -1,6 +1,6 @@
 import 'package:driver_drowsiness_alert/Widgets/Drowsiness_Detection/drowsiness_detection.dart';
 import 'package:driver_drowsiness_alert/Widgets/Map/Location_Map.dart';
-import 'package:driver_drowsiness_alert/Widgets/Settings/settings.dart';
+import 'package:driver_drowsiness_alert/Widgets/Profile/profile_screen.dart';
 import 'package:driver_drowsiness_alert/Widgets/ToDo/todo_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
               label: 'location',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle_outline),
-              label: 'Task',
+              icon: Icon(Icons.add_task_outlined),
+              label: 'ToDo',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              label: 'Settings',
+              icon: Icon(Icons.person_outline),
+              label: 'Profile',
             ),
           ],
           currentIndex: selected_index,
@@ -51,6 +51,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-  List<Widget>Tabs=[DrowsinessDetection(),LocationMap(),ToDoScreen(),Settings()];
+  List<Widget>Tabs=[DrowsinessDetection(),LocationMap(),ToDoScreen(),ProfileScreen()];
 
 }

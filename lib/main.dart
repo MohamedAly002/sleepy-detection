@@ -1,7 +1,7 @@
 import 'package:driver_drowsiness_alert/Widgets/Drowsiness_Detection/drowsiness_detection.dart';
 import 'package:driver_drowsiness_alert/Widgets/Home/home_screen.dart';
 import 'package:driver_drowsiness_alert/Widgets/Map/Location_Map.dart';
-import 'package:driver_drowsiness_alert/Widgets/Settings/settings.dart';
+import 'package:driver_drowsiness_alert/Widgets/Profile/profile_screen.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20Up/sign_up.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20in/forget_passward.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20in/sign_in.dart';
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Driver Drowsiness Alert',
+      title: 'Sleepy Detection',
       theme: ThemeData(
         primaryColor: Color(0xFF0583F2)
       ),
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.routeName: (_) => HomeScreen(),
         DrowsinessDetection.routeName: (_) => DrowsinessDetection(),
         LocationMap.routeName: (_) => LocationMap(),
-        Settings.routeName: (_) => Settings(),
+        ProfileScreen.routeName: (_) => ProfileScreen(),
         ToDoScreen.routeName: (_) => ToDoScreen(),
         LiveCameraDetection.routeName: (_) => LiveCameraDetection(),
         SignInScreen.routeName: (_) => SignInScreen(),
