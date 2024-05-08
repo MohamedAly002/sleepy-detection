@@ -55,8 +55,13 @@ dependencies:
   intl: ^0.18.1
   carousel_slider: ^4.2.1
   flutter_calendar_week: ^3.0.2
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.4.0
 
-
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/illustrations/sleepy1.png"
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -86,6 +91,7 @@ flutter:
     - assets/model2/
     - assets/sound/Alarm.wav
     - assets/illustrations/
+    - assets/splash screen/sleepy_splash.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

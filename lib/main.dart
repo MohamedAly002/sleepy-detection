@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Sleepy Detection',
+      title: 'Sleepy Alert',
       theme: ThemeData(
         primaryColor: Color(0xFF0583F2)
       ),
