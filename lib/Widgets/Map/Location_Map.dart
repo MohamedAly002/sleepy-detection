@@ -108,6 +108,18 @@ class _LocationMapState extends State<LocationMap> {
             ],
           ),
         ),
+        Positioned(
+          bottom: 16.0,
+          right: 16.0,
+          child: FloatingActionButton(
+            onPressed: () {
+              moveMapToCurrentLocation();
+
+            },
+            child: Icon(Icons.my_location),
+          ),
+        ),
+
       ],
     );
 
@@ -126,6 +138,7 @@ class _LocationMapState extends State<LocationMap> {
     super.dispose();
   }
 
+
   void updateCurrentLocation() {
     try {
       mapServices.updateCurrentLocation(
@@ -142,7 +155,20 @@ class _LocationMapState extends State<LocationMap> {
     } on LocationPermissionException catch (e) {
       print('LocationPermissionException');
     } catch (e) {
-      // TODO:
+      print(e);
     }
   }
+  void moveMapToCurrentLocation() {
+    if (mapServices.currentLocation != null && googleMapController != null) {
+      googleMapController.animateCamera(
+        CameraUpdate.newCameraPosition(
+          CameraPosition(
+            target: mapServices.currentLocation!,
+            zoom: 17,
+          ),
+        ),
+      );
+    }
+  }
+
 }

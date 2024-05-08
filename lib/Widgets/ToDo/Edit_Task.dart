@@ -25,7 +25,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text("Edit Task"),
+        backgroundColor: Color(0xFF0583F2),
         elevation: 0,
       ),
       body: Container(
@@ -36,7 +36,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
             Positioned(
                 child: Container(
               width: double.infinity,
-              height: mediaQuery.height * .1,
+              height: mediaQuery.height * .15,
               color: Color(0xFF0583F2),
             )),
             Column(
@@ -59,7 +59,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                         Center(
                             child: Text(
                           "Edit Task",
-                          style: Theme.of(context).textTheme.headline5,
+                          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),
                         )),
                         SizedBox(
                           height: 70,
@@ -71,9 +71,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                             children: [
                               Text(
                                 "Task Title",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6),
+                                style:TextStyle(fontWeight: FontWeight.bold,fontSize: 22)),
                               TextFormField(
                                 onChanged: (String value) {
                                   widget.task.title=value;
@@ -86,9 +84,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                               ),
                               Text(
                                 "Task Details",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headline6
+                                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22)
                               ),
                               TextFormField(
                                 onChanged: (String value) {
@@ -102,7 +98,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                               ),
                               Text(
                                 "Date",
-                                style: Theme.of(context).textTheme.headline6,
+                                style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),
                               ),
                               InkWell(
                                 onTap: () {
@@ -112,9 +108,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
                                     MyDateUtils.formateTaskDate(widget.task.date),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline6
+                                    style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20)
                                         ?.copyWith(
                                             color:
                                                 Theme.of(context).primaryColor),
@@ -125,7 +119,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
                           ),
                         ),
                         SizedBox(
-                          height: 60,
+                          height: 40,
                         ),
                         MaterialButton(
                             onPressed: () {

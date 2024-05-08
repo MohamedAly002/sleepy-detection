@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:driver_drowsiness_alert/Widgets/Home/home_screen.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20Up/sign_up.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20in/forget_passward.dart';
@@ -23,6 +25,32 @@ class _SignInScreenState extends State<SignInScreen> {
   RegExp emailRegex = RegExp(
     r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
   );
+  int failedAttempts = 0;
+  Timer? timer;
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (failedAttempts >= 3) {
+        setState(() {
+          if (timer.tick <= 180) {
+            // Update the failed attempts every second
+            failedAttempts = timer.tick;
+          } else {
+            // Reset failed attempts counter after 3 minutes
+            failedAttempts = 0;
+            timer.cancel();
+          }
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
   Future login() async {
     try {
       if (Email_controller.text.trim().isEmpty ||
@@ -47,6 +75,20 @@ class _SignInScreenState extends State<SignInScreen> {
           text: 'Welcome Again');
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
+      failedAttempts++;
+      if (failedAttempts >= 3) {
+        // Disable login button for 3 minutes
+        setState(() {
+          timer = Timer.periodic(Duration(seconds: 1), (timer) {
+            if (timer.tick == 180) {
+              timer.cancel();
+              setState(() {
+                failedAttempts = 0;
+              });
+            }
+          });
+        });
+      }
       QuickAlert.show(
           context: context,
           type: QuickAlertType.error,
@@ -70,6 +112,7 @@ class _SignInScreenState extends State<SignInScreen> {
               Form(
                 key: formKey,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     customTextformField(
                       controller: Email_controller,
@@ -108,6 +151,18 @@ class _SignInScreenState extends State<SignInScreen> {
                         return null;
                       },
                     ),
+                    if (failedAttempts >= 3)
+                      if (failedAttempts >= 3)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8.0),
+                          child: Text(
+                            'Please wait for ${_formatDuration(180 - failedAttempts)} before trying again!',
+                            style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
                   ],
                 ),
               ),
@@ -140,7 +195,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         onPressed: () {
                           textformValidation();
-                          login();
+                          if (failedAttempts < 3) {
+                            login();
+                          }
                         },
                         child: const Text(
                           "Login",
@@ -177,7 +234,11 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
-
+  String _formatDuration(int seconds) {
+    int minutes = seconds ~/ 60;
+    int remainingSeconds = seconds % 60;
+    return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
+  }
   void textformValidation() {
     if (formKey.currentState?.validate() == false) {
       return;
