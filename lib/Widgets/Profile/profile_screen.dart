@@ -89,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               MaterialStatePropertyAll(EdgeInsets.all(10))),
                       onPressed: () async {
                         await FirebaseAuth.instance.signOut();
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.popAndPushNamed(context, SignInScreen.routeName);
                       },
                       icon: Icon(
                         Icons.logout,
