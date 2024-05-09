@@ -63,10 +63,8 @@ class _BoundaryBoxState extends State<BoundaryBox> {
     return widget.results.map((re) {
       try {
         if (re["label"] == '0 Closed' && (re["confidence"] * 100 > 50)) {
-          // If eyes are closed with confidence above 50%, play the ringtone
           _playRingtone();
         } else if (re["label"] == '1 Open' && (re["confidence"] * 100 > 70)) {
-          // If eyes are open with confidence above 50%, stop the ringtone
           _stopRingtone();
         }
       } catch (err) {
@@ -78,7 +76,7 @@ class _BoundaryBoxState extends State<BoundaryBox> {
         width: widget.screenW,
         height: widget.screenH,
         child: Text(
-          "${re["label"] == '0 Closed' ? "Eyes Closed" : "Eyes Open"} ${(re["confidence"] * 100).toStringAsFixed(0)}%",
+          "${re["label"] == '0 Closed' ? "Sleepy" : "Awake"} ${(re["confidence"] * 100).toStringAsFixed(0)}%",
           style: TextStyle(
             backgroundColor: Colors.white,
             color: re["label"] == '0 Closed' ? Colors.red : Colors.green,

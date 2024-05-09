@@ -69,7 +69,7 @@ class _LocationMapState extends State<LocationMap> {
             googleMapController = controller;
             updateCurrentLocation();
           },
-          zoomControlsEnabled: true,
+          zoomControlsEnabled: false,
           initialCameraPosition: initalCameraPoistion,
         ),
         Positioned(

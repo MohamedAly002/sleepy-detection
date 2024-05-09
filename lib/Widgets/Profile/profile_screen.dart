@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:driver_drowsiness_alert/Widgets/Sign%20in/sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -88,7 +89,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               MaterialStatePropertyAll(EdgeInsets.all(10))),
                       onPressed: () async {
                         await FirebaseAuth.instance.signOut();
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context, SignInScreen.routeName);
                       },
                       icon: Icon(
                         Icons.logout,

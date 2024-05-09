@@ -21,7 +21,7 @@ class _DrowsinessDetectionState extends State<DrowsinessDetection> {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
-                  'Welcome to Sleepy Detection!',
+                  'Welcome to Sleepy Alert!',
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),

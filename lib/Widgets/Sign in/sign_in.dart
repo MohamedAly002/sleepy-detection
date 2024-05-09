@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:driver_drowsiness_alert/Widgets/Home/home_screen.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20Up/sign_up.dart';
 import 'package:driver_drowsiness_alert/Widgets/Sign%20in/forget_passward.dart';
@@ -51,6 +50,7 @@ class _SignInScreenState extends State<SignInScreen> {
     timer?.cancel();
     super.dispose();
   }
+
   Future login() async {
     try {
       if (Email_controller.text.trim().isEmpty ||
@@ -123,7 +123,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         if (text == null || text.trim().isEmpty) {
                           return 'Please Enter Your Email';
                         }
-                        if (!EmailValidator.validate(text)||!emailRegex.hasMatch(text)) {
+                        if (!EmailValidator.validate(text) ||
+                            !emailRegex.hasMatch(text)) {
                           return 'Invalid Email Format';
                         }
                         return null;
@@ -234,11 +235,13 @@ class _SignInScreenState extends State<SignInScreen> {
       ),
     );
   }
+
   String _formatDuration(int seconds) {
     int minutes = seconds ~/ 60;
     int remainingSeconds = seconds % 60;
     return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
   }
+
   void textformValidation() {
     if (formKey.currentState?.validate() == false) {
       return;
