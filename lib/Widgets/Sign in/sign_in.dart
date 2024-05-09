@@ -68,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
           email: Email_controller.text.trim(),
           password: Password_controller.text.trim());
       Navigator.pop(context);
-      Navigator.pushNamed(context, HomeScreen.routeName);
+      Navigator.popAndPushNamed(context, HomeScreen.routeName);
       QuickAlert.show(
           context: context,
           type: QuickAlertType.success,
