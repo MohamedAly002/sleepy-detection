@@ -87,6 +87,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/model2/
+    - assets/home_location.png
     - assets/sound/Alarm.wav
     - assets/illustrations/
     - assets/splash screen/sleepy_splash.png

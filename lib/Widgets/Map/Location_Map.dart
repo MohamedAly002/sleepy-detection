@@ -29,6 +29,7 @@ class _LocationMapState extends State<LocationMap> {
   Set<Polyline> polyLines = {};
   late LatLng desintation;
   Timer? debounce;
+
   @override
   void initState() {
     mapServices = MapServices();
@@ -55,8 +56,6 @@ class _LocationMapState extends State<LocationMap> {
       });
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -95,8 +94,12 @@ class _LocationMapState extends State<LocationMap> {
                       placeDetailsModel.geometry!.location!.lat!,
                       placeDetailsModel.geometry!.location!.lng!);
 
-                  var points =
-                  await mapServices.getRouteData(desintation: desintation);
+                  mapServices.addDestinationMarker(
+                    destination: desintation,
+                    markers: markers,
+                  );
+
+                  var points = await mapServices.getRouteData(desintation: desintation);
                   mapServices.displayRoute(points,
                       polyLines: polyLines,
                       googleMapController: googleMapController);
@@ -114,30 +117,21 @@ class _LocationMapState extends State<LocationMap> {
           child: FloatingActionButton(
             onPressed: () {
               moveMapToCurrentLocation();
-
             },
             child: Icon(Icons.my_location),
           ),
         ),
-
       ],
     );
-
   }
+
   @override
   void dispose() {
-    // Cancel the text editing controller
     textEditingController.dispose();
-
-    // Cancel the debounce timer
     debounce?.cancel();
-
-    // Dispose of the Google Map controller
     googleMapController.dispose();
-
     super.dispose();
   }
-
 
   void updateCurrentLocation() {
     try {
@@ -158,6 +152,7 @@ class _LocationMapState extends State<LocationMap> {
       print(e);
     }
   }
+
   void moveMapToCurrentLocation() {
     if (mapServices.currentLocation != null && googleMapController != null) {
       googleMapController.animateCamera(
@@ -170,5 +165,4 @@ class _LocationMapState extends State<LocationMap> {
       );
     }
   }
-
 }
